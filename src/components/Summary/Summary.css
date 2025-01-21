@@ -16,7 +16,15 @@
     margin-top: 0;
 }
 
-.summary-container p:last-of-type {
+.summary-container p:first-of-type {
     margin-bottom: 0;
     font-weight: bold; /* Pour faire ressortir le mois max, par exemple */
+}
+
+.max {
+    color: #dc3545; /* Rouge */
+}
+
+.min {
+    color: #28a745; /* Vert */
 }

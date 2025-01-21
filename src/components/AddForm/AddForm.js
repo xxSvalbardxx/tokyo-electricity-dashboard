@@ -6,13 +6,21 @@ function AddForm({ onAdd }) {
     const [consumption, setConsumption] = useState("");
     const [unit, setUnit] = useState("kW");
 
+    // Gestion de la soumission du formulaire
     const handleSubmit = (e) => {
         e.preventDefault();
+        // Convertir la consommation en nombre décimal
         const numConsumption = parseFloat(consumption);
+        
+        // onAdd est appelée avec les valeurs du formulaire
+        // onAdd est définit dans src/App.js et appel la fonction handleAdd qui se charge de vérifier les valeurs et de les ajouter au tableau
         onAdd(month, numConsumption, unit);
+
+        // Réinitialiser les champs pour la prochaine soumission
         setMonth("");
         setConsumption("");
         setUnit("kW");
+
     };
 
     return (

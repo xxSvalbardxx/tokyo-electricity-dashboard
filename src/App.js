@@ -15,7 +15,8 @@ const toW = (value, unit) => {
 };
 
 function App() {
-    // Contiendra le tableau des données, mais en kW
+    // dataInKW est l'état actuel du tableau d'objets { month: "YYYY-MM", consumptionKW: 123 }
+    // setDataInKW est une fonction pour mettre à jour ce tableau
     const [dataInKW, setDataInKW] = useState([]);
 
     // Charger le JSON une seule fois au montage
@@ -33,8 +34,8 @@ function App() {
                     month: item.month,
                     consumptionKW: toKW(item.consumption, item.unit),
                 }));
-                // (Optionnel) trier par mois
-                // converted.sort((a, b) => a.month.localeCompare(b.month));
+                converted.sort((a, b) => a.month.localeCompare(b.month));
+
                 setDataInKW(converted);
             })
             .catch((err) => console.error("Erreur chargement JSON:", err));
@@ -49,11 +50,13 @@ function App() {
             return;
         }
 
-        if (consumption <= 0) {
+        // Vérifier les valeurs
+        if (consumption <= 0 || isNaN(consumption)) {
             alert("La consommation doit être positive.");
             return;
         }
 
+        // Vérifier l'unité
         if (!["W", "kW"].includes(unit)) {
             alert("Unité invalide. Choisir 'W' ou 'kW'.");
             return;
@@ -65,16 +68,21 @@ function App() {
         };
 
         // Mettre à jour le state
+        // Prev est le tableau actuel et on ajoute le nouvel objet
         setDataInKW((prev) => [...prev, newObj]);
     };
 
     // 2. Modifier une entrée existante
     const handleEdit = (monthToEdit, newConsumption, newUnit) => {
         setDataInKW((prev) =>
+            // parcourir le tableau et remplacer l'objet correspondant
             prev.map((item) => {
+                // Si c'est le mois à éditer, on remplace la consommation
                 if (item.month === monthToEdit) {
                     return {
+                        // On garde les autres propriétés inchangées
                         ...item,
+                        // On remplace la consommation
                         consumptionKW: toKW(newConsumption, newUnit),
                     };
                 }
@@ -82,6 +90,15 @@ function App() {
             })
         );
     };
+
+    // 3. Supprimer une entrée existante
+    const handleDelete = (monthToDelete) => {
+        // êtes sûr de vouloir supprimer ?
+        if (!window.confirm("Voulez-vous vraiment supprimer ce mois ?")) {
+            return;
+        }
+        setDataInKW((prev) => prev.filter((item) => item.month !== monthToDelete));
+    }
 
     return (
         <div
@@ -98,7 +115,7 @@ function App() {
             <ConsumptionChart data={dataInKW} />
 
             {/* Table + bouton modifier */}
-            <DataTable data={dataInKW} onEdit={handleEdit} />
+            <DataTable data={dataInKW} onEdit={handleEdit} onDelete={handleDelete} />
 
             {/* Formulaire d'ajout */}
             <AddForm onAdd={handleAdd} />

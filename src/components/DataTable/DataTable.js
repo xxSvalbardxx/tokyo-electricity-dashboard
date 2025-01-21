@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./DataTable.css";
 
-function DataTable({ data, onEdit }) {
+function DataTable({ data, onEdit, onDelete }) {
     const [editMonth, setEditMonth] = useState(null);
     const [editConsumption, setEditConsumption] = useState("");
     const [editUnit, setEditUnit] = useState("kW");
@@ -97,6 +97,11 @@ function DataTable({ data, onEdit }) {
                                             }
                                         >
                                             Modifier
+                                        </button>
+                                        <button
+                                            onClick={() => onDelete(item.month)}
+                                        >
+                                            Supprimer
                                         </button>
                                     </td>
                                 </tr>

@@ -13,8 +13,6 @@ import "./ConsumptionChart.css";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title);
 
 function ConsumptionChart({ data }) {
-    // Trier dans l'ordre par mois
-    data.sort((a, b) => a.month.localeCompare(b.month));
 
     // Extraire labels et valeurs
     const labels = data.map((d) => d.month);
@@ -64,8 +62,6 @@ function ConsumptionChart({ data }) {
         <div className="chart-container">
             <h2>Graphique</h2>
             <Bar data={chartData} options={options} />
-            {/* button to convert in W */}
-            {/* <button>Convert to W</button> */}
         </div>
     );
 }

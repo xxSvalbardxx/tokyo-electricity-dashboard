@@ -18,12 +18,25 @@ function Summary({ data }) {
         }
     });
 
+    // Repérer le mois min
+    let minEntry = data[0];
+    data.forEach((d) => {
+        if (d.consumptionKW < minEntry.consumptionKW) {
+            minEntry = d;
+        }
+    });
+
     return (
         <div className="summary-container">
             <p>Consommation totale : {total.toFixed(2)} kW</p>
             <p>Moyenne mensuelle : {avg.toFixed(2)} kW</p>
-            <p>
+            <p className="max">
                 Mois le plus élevé : {maxEntry.month} ({maxEntry.consumptionKW}{" "}
+                kW)
+            </p>
+
+            <p className="min">
+                Mois le plus bas : {minEntry.month} ({minEntry.consumptionKW}{" "}
                 kW)
             </p>
         </div>
