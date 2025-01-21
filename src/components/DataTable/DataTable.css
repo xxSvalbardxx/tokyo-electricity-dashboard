@@ -1,0 +1,56 @@
+.data-table-container {
+    margin: 16px 0;
+}
+
+/* Titre h2 pour la table */
+.data-table-container h2 {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+/* Le tableau lui-même */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* si tu veux un fond blanc */
+}
+
+/* Entêtes du tableau */
+.data-table thead th {
+    border: 1px solid #ccc;
+    padding: 8px;
+    background-color: #f4f4f4;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Cellules */
+.data-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+/* Boutons */
+.data-table button {
+    margin-right: 8px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #007bff; /* Bleu */
+    color: #fff;
+}
+
+.data-table button:hover {
+    background-color: #0056b3; /* Bleu plus sombre au survol */
+}
+
+/* Ajout d'un bouton "annuler" moins contrasté, si tu souhaites */
+.data-table button.cancel-btn {
+    background-color: #6c757d;
+}
+
+.data-table button.cancel-btn:hover {
+    background-color: #5a6268;
+}

@@ -7,6 +7,7 @@ import {
     BarElement,
     Title,
 } from "chart.js";
+import "./ConsumptionChart.css";
 
 // Enregistrer les composants auprès de Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title);
@@ -14,6 +15,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title);
 function ConsumptionChart({ data }) {
     // Trier dans l'ordre par mois
     data.sort((a, b) => a.month.localeCompare(b.month));
+
     // Extraire labels et valeurs
     const labels = data.map((d) => d.month);
     const values = data.map((d) => d.consumptionKW);
@@ -25,6 +27,8 @@ function ConsumptionChart({ data }) {
                 label: "Consommation (kW)",
                 data: values,
                 backgroundColor: "rgba(75,192,192,0.6)",
+                borderColor: "rgba(75,192,192,1)",
+                borderWidth: 1,
             },
         ],
     };
@@ -37,6 +41,9 @@ function ConsumptionChart({ data }) {
                     display: true,
                     text: "Mois",
                 },
+                ticks: {
+                    autoSkip: false,
+                },
             },
             y: {
                 type: "linear",
@@ -45,9 +52,8 @@ function ConsumptionChart({ data }) {
                     display: true,
                     text: "Consommation (kW)",
                 },
-                // ticks 10 by 10
                 ticks: {
-                    stepSize: 20,
+                    stepSize: 10,
                     autoSkip: false,
                 },
             },
@@ -55,9 +61,11 @@ function ConsumptionChart({ data }) {
     };
 
     return (
-        <div>
+        <div className="chart-container">
             <h2>Graphique</h2>
             <Bar data={chartData} options={options} />
+            {/* button to convert in W */}
+            {/* <button>Convert to W</button> */}
         </div>
     );
 }

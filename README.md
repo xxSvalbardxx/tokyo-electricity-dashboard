@@ -12,4 +12,7 @@ npm start
 - Table with the consumption of electricity per month with a CRUD to add, edit and delete
 
 # Adjustments after GPT proposal
-- graph sort per month
+- graph sorted by month
+- Auto skip disabled on month axis
+- Organisation of the components by folder to add CSS and eventually tests
+- Little bit of css

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./AddForm.css";
 
 function AddForm({ onAdd }) {
     const [month, setMonth] = useState("");
@@ -7,22 +8,21 @@ function AddForm({ onAdd }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // On convertit la saisie en number
         const numConsumption = parseFloat(consumption);
         onAdd(month, numConsumption, unit);
-        // Reset du formulaire
         setMonth("");
         setConsumption("");
         setUnit("kW");
     };
 
     return (
-        <div>
+        <div className="add-form-container">
             <h2>Ajouter un nouveau mois</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Mois (YYYY-MM) : </label>
+                    <label htmlFor="month-field">Mois (YYYY-MM) :</label>
                     <input
+                        id="month-field"
                         type="month"
                         value={month}
                         onChange={(e) => setMonth(e.target.value)}
@@ -30,8 +30,9 @@ function AddForm({ onAdd }) {
                     />
                 </div>
                 <div>
-                    <label>Consommation : </label>
+                    <label htmlFor="consumption-field">Consommation :</label>
                     <input
+                        id="consumption-field"
                         type="number"
                         value={consumption}
                         onChange={(e) => setConsumption(e.target.value)}

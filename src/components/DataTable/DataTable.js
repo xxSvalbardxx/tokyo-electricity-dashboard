@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import "./DataTable.css";
 
 function DataTable({ data, onEdit }) {
-    // État local pour savoir quel mois on est en train d'éditer
     const [editMonth, setEditMonth] = useState(null);
     const [editConsumption, setEditConsumption] = useState("");
     const [editUnit, setEditUnit] = useState("kW");
@@ -9,7 +9,7 @@ function DataTable({ data, onEdit }) {
     const handleStartEdit = (month, currentValue) => {
         setEditMonth(month);
         setEditConsumption(currentValue);
-        setEditUnit("kW"); // Par défaut, on part de kW
+        setEditUnit("kW");
     };
 
     const handleSave = (month) => {
@@ -27,26 +27,14 @@ function DataTable({ data, onEdit }) {
     };
 
     return (
-        <div>
+        <div className="data-table-container">
             <h2>Données mensuelles</h2>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <table className="data-table">
                 <thead>
                     <tr>
-                        <th
-                            style={{ border: "1px solid #ccc", padding: "8px" }}
-                        >
-                            Mois
-                        </th>
-                        <th
-                            style={{ border: "1px solid #ccc", padding: "8px" }}
-                        >
-                            Consommation (kW)
-                        </th>
-                        <th
-                            style={{ border: "1px solid #ccc", padding: "8px" }}
-                        >
-                            Actions
-                        </th>
+                        <th>Mois</th>
+                        <th>Consommation (kW)</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,20 +43,8 @@ function DataTable({ data, onEdit }) {
                             // Mode édition
                             return (
                                 <tr key={item.month}>
-                                    <td
-                                        style={{
-                                            border: "1px solid #ccc",
-                                            padding: "8px",
-                                        }}
-                                    >
-                                        {item.month}
-                                    </td>
-                                    <td
-                                        style={{
-                                            border: "1px solid #ccc",
-                                            padding: "8px",
-                                        }}
-                                    >
+                                    <td>{item.month}</td>
+                                    <td>
                                         <input
                                             type="number"
                                             value={editConsumption}
@@ -88,12 +64,7 @@ function DataTable({ data, onEdit }) {
                                             <option value="W">W</option>
                                         </select>
                                     </td>
-                                    <td
-                                        style={{
-                                            border: "1px solid #ccc",
-                                            padding: "8px",
-                                        }}
-                                    >
+                                    <td>
                                         <button
                                             onClick={() =>
                                                 handleSave(item.month)
@@ -102,6 +73,7 @@ function DataTable({ data, onEdit }) {
                                             Enregistrer
                                         </button>
                                         <button
+                                            className="cancel-btn"
                                             onClick={() => setEditMonth(null)}
                                         >
                                             Annuler
@@ -113,28 +85,9 @@ function DataTable({ data, onEdit }) {
                             // Mode lecture seule
                             return (
                                 <tr key={item.month}>
-                                    <td
-                                        style={{
-                                            border: "1px solid #ccc",
-                                            padding: "8px",
-                                        }}
-                                    >
-                                        {item.month}
-                                    </td>
-                                    <td
-                                        style={{
-                                            border: "1px solid #ccc",
-                                            padding: "8px",
-                                        }}
-                                    >
-                                        {item.consumptionKW}
-                                    </td>
-                                    <td
-                                        style={{
-                                            border: "1px solid #ccc",
-                                            padding: "8px",
-                                        }}
-                                    >
+                                    <td>{item.month}</td>
+                                    <td>{item.consumptionKW}</td>
+                                    <td>
                                         <button
                                             onClick={() =>
                                                 handleStartEdit(

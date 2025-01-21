@@ -1,4 +1,5 @@
 import React from "react";
+import "./Summary.css";
 
 function Summary({ data }) {
     if (!data || data.length === 0) {
@@ -18,7 +19,7 @@ function Summary({ data }) {
     });
 
     return (
-        <div>
+        <div className="summary-container">
             <p>Consommation totale : {total.toFixed(2)} kW</p>
             <p>Moyenne mensuelle : {avg.toFixed(2)} kW</p>
             <p>

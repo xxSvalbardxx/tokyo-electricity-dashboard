@@ -1,0 +1,57 @@
+.add-form-container {
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 16px;
+    margin: 16px 0;
+    max-width: 400px; /* Ajuste selon tes besoins */
+}
+
+.add-form-container h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.add-form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.add-form-container form div {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Les labels et inputs/ selects sur une même ligne, si tu préfères */
+.add-form-container label {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+/* Styles communs pour les champs de formulaire */
+.add-form-container input[type="month"],
+.add-form-container input[type="number"],
+.add-form-container select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Bouton */
+.add-form-container button[type="submit"] {
+    width: fit-content;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    align-self: flex-start; /* Pour aligner le bouton à gauche */
+}
+
+.add-form-container button[type="submit"]:hover {
+    background-color: #0056b3;
+}

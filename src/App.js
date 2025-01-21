@@ -2,8 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import ConsumptionChart from "./components/ConsumptionChart/ConsumptionChart";
-import DataTable from "./components/DataTable";
-import Summary from "./components/Summary";
+import DataTable from "./components/DataTable/DataTable";
+import Summary from "./components/Summary/Summary";
 import AddForm from "./components/AddForm/AddForm";
 
 const toKW = (value, unit) => {
@@ -92,7 +92,8 @@ function App() {
             }}
         >
             <h1>Dashboard Conso Électrique - Tokyo</h1>
-
+            {/* Résumé */}
+            <Summary data={dataInKW} />
             {/* Graphique */}
             <ConsumptionChart data={dataInKW} />
 
@@ -101,9 +102,6 @@ function App() {
 
             {/* Formulaire d'ajout */}
             <AddForm onAdd={handleAdd} />
-
-            {/* Résumé */}
-            <Summary data={dataInKW} />
         </div>
     );
 }

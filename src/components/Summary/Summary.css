@@ -1,0 +1,22 @@
+.summary-container {
+    background-color: #f0f0f0;
+    border-left: 4px solid #007bff;
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 2px;
+}
+
+.summary-container p {
+    margin: 4px 0;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.summary-container p:first-of-type {
+    margin-top: 0;
+}
+
+.summary-container p:last-of-type {
+    margin-bottom: 0;
+    font-weight: bold; /* Pour faire ressortir le mois max, par exemple */
+}
