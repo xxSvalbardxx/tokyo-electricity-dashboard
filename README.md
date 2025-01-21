@@ -30,3 +30,4 @@ Les données ne sont contenu que dans App.js pour les rendre accessibles aux aut
 
 # Further improvements
 - Delete a date from the table with modal confirmation
+- Save the data in a json/db
